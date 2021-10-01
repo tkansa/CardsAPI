@@ -1,0 +1,26 @@
+﻿@model Deck
+
+<div class="text-center">
+    @if (Model.cards.Count > 4)
+    {
+        <a class="nav-link text-dark" href="/Home/DrawFiveMore?deck_id=@Model.deck_id">Draw 5 More Cards</a>
+    }
+    @if (Model.cards.Count < 5)
+    {
+        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DrawFive">Start Drawing from a new deck</a>
+    }
+
+
+    @foreach (Card c in Model.cards)
+    {
+        <div>
+            <img src="@c.image" />
+        </div>
+        <div>
+            Suit: @c.suit
+        </div>
+        <div>
+            Value: @c.value
+        </div>
+    }
+</div>
